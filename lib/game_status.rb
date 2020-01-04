@@ -12,6 +12,7 @@ WIN_COMBINATIONS.detect do |win_combination|
   end
 end
 
+
 def full?(board)
   board.all? do |position|
     position == "X" || position == "O"
@@ -19,29 +20,18 @@ def full?(board)
 end
 
 def draw?(board)
-  if won?(board) == nil && full?(board) == true
-    true
-  else
-    false
-  end
+  !won?(board) && full?(board)
 end
 
 def over?(board)
-  if won?(board) != nil || draw?(board) == true || full?(board) == true
-    true
-  else
-    false
-  end
+  won?(board) || draw?(board)
 end
 
 def winner(board)
-  if won?(board) == nil
-    return nil
-  else
+  if won?(board)
     return board[won?(board)[0]]
   end
 end
-
     
     
     
